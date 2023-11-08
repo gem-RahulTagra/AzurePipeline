@@ -1,13 +1,19 @@
 trigger:
-- main  # or the branch you want to trigger the pipeline on
+- main  # Set the branch to trigger the pipeline on
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-latest'  # Use a Windows agent
 
 steps:
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
 
-- script: 'mvn clean test'  # Maven build and test command
-  displayName: 'Maven Build and Test'
+- script: 'mvn clean test'  # Command to build and run your Selenium tests using Maven
+  displayName: 'Run Selenium Tests'
+
+- script: 'mvn io.qameta.allure:allure-maven:2.10.0:report'  # Command to generate Allure reports
+  displayName: 'Generate Allure Reports'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)/target/site'  # Path to Allure results folder
+    artifactName: 'AllureReports'
+  displayName: 'Publish Allure Reports'
