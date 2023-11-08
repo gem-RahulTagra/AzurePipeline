@@ -5,10 +5,9 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: UseJavaVersion@1
+- task: Maven@4
   inputs:
-    versionSpec: '11'  # or your desired JDK version
-    installationPath: 'true'
+    mavenPomFile: 'pom.xml'
 
 - script: 'mvn clean test'  # Maven build and test command
   displayName: 'Maven Build and Test'
