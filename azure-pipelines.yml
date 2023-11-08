@@ -1,0 +1,14 @@
+trigger:
+- main  # or the branch you want to trigger the pipeline on
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: UseJavaVersion@1
+  inputs:
+    versionSpec: '11'  # or your desired JDK version
+    installationPath: 'true'
+
+- script: 'mvn clean test'  # Maven build and test command
+  displayName: 'Maven Build and Test'
