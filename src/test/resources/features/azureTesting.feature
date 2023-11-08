@@ -8,7 +8,6 @@ Feature: Sample Azure Testing
     When User enters "password"
     And Click on login button
     Then Verify if user is logged in or not
-    When User opens "Leave" tab
 
   @applyLeave
   Scenario: Apply Leave
