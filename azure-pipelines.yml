@@ -12,7 +12,7 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
-- script: 'mvn clean test -D\"cucumber.filter.tags=@azure\"'  # Command to build and run your Selenium tests using Maven
+- script: 'mvn clean test -Dcucumber.filter.tags=@azure'  # Command to build and run your Selenium tests using Maven
   displayName: 'Run Selenium Tests'
 
 - script: 'mvn io.qameta.allure:allure-maven:2.10.0:report'  # Command to generate Allure reports
