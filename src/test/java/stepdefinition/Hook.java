@@ -2,6 +2,7 @@ package stepdefinition;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,6 +14,8 @@ import java.net.MalformedURLException;
 public class Hook {
 
     static WebDriver driver;
+
+
 
     @Before
     public void start() throws MalformedURLException {
