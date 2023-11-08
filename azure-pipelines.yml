@@ -12,6 +12,28 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
+- powershell: |
+    $configFilePath = "$(System.DefaultWorkingDirectory)/config.properties"
+
+    # Define key-value pairs to assign values to existing keys
+    $keyValuePairs = @{
+        "username" = "$(username)"
+        "password" = "$(password)"
+    }
+
+    # Read existing content of the config.properties file
+    $configContent = Get-Content -Path $configFilePath
+
+    # Update existing keys with new values
+    foreach ($key in $keyValuePairs.Keys) {
+        $configContent = $configContent -replace "^$key=.*", "$key=$($keyValuePairs[$key])"
+    }
+
+    # Write updated content back to the config.properties file
+    $configContent | Set-Content -Path $configFilePath -Force
+
+  displayName: 'Modify config.properties file'
+
 - script: 'mvn clean test -Dcucumber.filter.tags=$(CUCUMBER_TAGS)'  # Command to build and run your Selenium tests using Maven
   displayName: 'Run Selenium Tests'
 
