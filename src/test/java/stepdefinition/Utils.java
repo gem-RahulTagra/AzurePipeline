@@ -6,7 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.Duration;
+import java.util.Properties;
 
 public class Utils{
 
@@ -23,4 +28,10 @@ public class Utils{
         return true;
     }
 
+    public String getProperty(String key) throws IOException {
+        Properties properties = new Properties();
+        InputStream input = new FileInputStream("config.properties");
+        properties.load(input);
+        return properties.getProperty(key);
+    }
 }
