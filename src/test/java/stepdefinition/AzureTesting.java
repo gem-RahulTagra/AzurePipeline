@@ -35,6 +35,9 @@ public class AzureTesting {
     public void userEnters(String key) {
         try {
             if (utils.isElementVisile(By.xpath("//input[@name='" + key + "']"), 10)) {
+                if (utils.getProperty(key).trim().equals("") || utils.getProperty(key).equals(null)) {
+                    Assert.fail("No Value is present for " + key + " in properties file");
+                }
                 driver.findElement(By.xpath("//input[@name='" + key + "']")).sendKeys(utils.getProperty(key));
                 Allure.addAttachment("Enter " + key, key + " enterd successfully");
             } else {
