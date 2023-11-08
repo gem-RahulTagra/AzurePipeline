@@ -20,7 +20,7 @@ public class Hook {
     @Before
     public void start() throws MalformedURLException {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\rahul.tagra\\Desktop\\AzurePipeline\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
