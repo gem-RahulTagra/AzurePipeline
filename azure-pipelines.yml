@@ -4,10 +4,6 @@ trigger:
 pool:
   vmImage: 'windows-latest'  # Use a Windows agent
 
-variables:
-- name: 'CUCUMBER_TAGS'
-  value: '@azure'
-
 steps:
 
 - task: JavaToolInstaller@0
