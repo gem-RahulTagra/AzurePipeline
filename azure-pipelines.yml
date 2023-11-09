@@ -44,8 +44,9 @@ steps:
   displayName: 'Publish Allure Report'
   inputs:
     reportDir: '$(Build.SourcesDirectory)/target/site/allure-maven-plugin'
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     pathtoPublish: '$(Build.SourcesDirectory)/target/site'  # Path to Allure results folder
-#     artifactName: 'AllureReports'
-#   displayName: 'Publish Allure Reports'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)/target/site/allure-maven-plugin'  # Path to Allure results folder
+    artifactName: 'AllureReports'
+  displayName: 'Publish Allure Reports'
